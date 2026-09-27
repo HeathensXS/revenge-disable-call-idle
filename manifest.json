@@ -1,0 +1,14 @@
+{
+  "name": "DisableCallIdle (Experimental)",
+  "description": "Attempts to prevent Discord Android from disconnecting an idle DM call by neutralizing the mobile client's idle-call handler.",
+  "authors": [
+    {
+      "name": "ChatGPT-assisted local build",
+      "id": "0"
+    }
+  ],
+  "main": "index.js",
+  "vendetta": {
+    "icon": "Call"
+  }
+}
