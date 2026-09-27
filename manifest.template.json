@@ -1,0 +1,10 @@
+{
+  "name": "DisableCallIdle",
+  "description": "Experimental Android port that attempts to stop Discord from disconnecting an idle DM call after about 3 minutes.",
+  "authors": [
+    {
+      "name": "HeathensXS"
+    }
+  ],
+  "main": "index.js"
+}

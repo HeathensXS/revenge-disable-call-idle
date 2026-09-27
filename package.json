@@ -1,0 +1,11 @@
+{
+  "name": "revenge-disable-call-idle",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node check.mjs",
+    "clean": "node clean.mjs"
+  }
+}

@@ -1,37 +1,75 @@
-# DisableCallIdle for Revenge Classic (EXPERIMENTAL)
+# Revenge DisableCallIdle - Complete Project
 
-This is an experimental Android port inspired by Vencord's DisableCallIdle behavior.
+## IMPORTANT: where to run npm commands
 
-## What it does
-It attempts to locate Discord Android's call-idle handler at runtime and patch it so the
-client does not disconnect an idle DM call after roughly 3 minutes.
+Open PowerShell in THIS folder — the folder containing:
 
-## Important
-- This is NOT guaranteed to work on every Discord Android build.
-- Discord's mobile internals differ from desktop Vencord.
-- If no compatible handler is found, the plugin intentionally does nothing rather than
-  blindly patching unrelated code.
-- A Discord update can break it.
+- package.json
+- build.mjs
+- check.mjs
+- manifest.template.json
+- src\
+- dist\
 
-## Install
-Revenge Classic plugins are normally installed from a static URL. Easiest route:
+Do NOT run npm commands inside `src` or `dist`.
 
-1. Create a GitHub repository.
-2. Upload `manifest.json` and `index.js` to the repository root.
-3. Enable GitHub Pages for the repository:
-   Settings -> Pages -> Deploy from branch -> main / root.
-4. Wait for Pages to publish.
-5. In Discord on Android:
-   Settings -> Revenge -> Plugins -> +
-6. Paste the URL to the published folder, e.g.
-   `https://YOURNAME.github.io/YOUR-REPO/`
-7. Enable the plugin and reload Discord.
-8. Test by joining a DM call, having the other person leave, and waiting >3 minutes.
+Example:
 
-## Troubleshooting
-If you are still disconnected, this Discord build does not expose the same handler.
-Check Revenge's logs for `[DisableCallIdle]` messages.
+```powershell
+cd C:\Users\DaKourage\Desktop\revenge-disable-call-idle-complete
+npm install
+npm run check
+npm run build
+```
 
-If the log says:
-`No compatible idle-call handler was found`
-then the next step is to inspect the exact Discord build and adapt the module lookup.
+There are no external npm dependencies in this project. `npm install` is optional, but safe to run.
+
+## What the commands do
+
+`npm run check`
+- evaluates the plugin source
+- checks onLoad/onUnload
+- runs it against a small mock Revenge API
+
+`npm run build`
+- copies src/index.js into dist/index.js
+- calculates the script hash
+- creates dist/manifest.json
+
+## Files you upload to GitHub
+
+ONLY upload the contents of `dist/` to the root of your GitHub Pages repository:
+
+- dist/index.js
+- dist/manifest.json
+
+Your GitHub repository should end up like:
+
+```text
+revenge-disable-call-idle/
+├── index.js
+└── manifest.json
+```
+
+Your Revenge install URL should then be:
+
+```text
+https://heathensxs.github.io/revenge-disable-call-idle/
+```
+
+## Prebuilt output
+
+This ZIP already contains a prebuilt `dist/` folder too.
+
+So if you do not want to build anything, you can upload:
+
+- dist/index.js
+- dist/manifest.json
+
+immediately.
+
+## Runtime limitation
+
+The package and loader format can be validated on a PC, but Discord Android's internal call-idle
+module names can vary by app build. If the plugin installs but the call still ends after ~3 minutes,
+the next step is to inspect the Revenge logs and adapt the runtime module lookup.
