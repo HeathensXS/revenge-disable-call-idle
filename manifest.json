@@ -1,15 +1,14 @@
 {
-  "format": 1,
-  "id": "com.example.plugin",
-  "name": "Example Plugin",
-  "description": "...",
-  "author": "Your Name",
-  "version": "1.0.0",
-  "dependencies": {
-    "revenge.api": { "version": ">=1" },
-    "discord": { "version": "*" }
-  },
-  "dist": {
-    "script": "index.js"
+  "name": "DisableCallIdle",
+  "description": "Prevents Discord from disconnecting an idle DM call.",
+  "authors": [
+    {
+      "name": "HeathensXS",
+      "id": "0"
+    }
+  ],
+  "main": "index.js",
+  "vendetta": {
+    "icon": "ic_call"
   }
 }
