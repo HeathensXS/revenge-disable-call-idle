@@ -1,14 +1,11 @@
 {
   "name": "DisableCallIdle",
-  "description": "Prevents Discord from disconnecting an idle DM call.",
+  "description": "Experimental Android port that attempts to stop Discord from disconnecting an idle DM call after about 3 minutes.",
   "authors": [
     {
-      "name": "HeathensXS",
-      "id": "0"
+      "name": "HeathensXS"
     }
   ],
   "main": "index.js",
-  "vendetta": {
-    "icon": "ic_call"
-  }
+  "hash": "c2597cb0818be074"
 }
